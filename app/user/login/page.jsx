@@ -53,7 +53,7 @@ export default function LoginForm() {
   }
   useEffect(()=>{
     async function main(){
-      if(data){ 
+      if(data){
         if(data.user.role == "supaAdmina"){
           await signOut()
         }
