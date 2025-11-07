@@ -114,17 +114,18 @@ export async function POST(req:NextRequest) {
       //   ORDER BY DATE_TRUNC('month', "createdAt")
       // `
     
-    await prisma.$queryRawUnsafe(`
+      await prisma.$queryRawUnsafe(`
         SELECT 
-          strftime('%Y-%m', "createdAt") AS month,
+          TO_CHAR("createdAt", 'YYYY-MM') AS month,
           COUNT(*) AS sales,
           SUM("grandTotal") AS revenue
         FROM "Sale"
-        WHERE "warehousesId" = ?
-          AND "createdAt" >= datetime('now', '-6 months')
-        GROUP BY strftime('%Y-%m', "createdAt")
-        ORDER BY strftime('%Y-%m', "createdAt")
+        WHERE "warehousesId" = $1
+          AND "createdAt" >= NOW() - INTERVAL '6 months'
+        GROUP BY TO_CHAR("createdAt", 'YYYY-MM')
+        ORDER BY TO_CHAR("createdAt", 'YYYY-MM')
       `, warehouseId)
+      
 
 
     ];
