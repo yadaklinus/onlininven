@@ -20,7 +20,7 @@
     "@heroui/snippet": "2.2.23",
     "@heroui/switch": "2.2.20",
     "@heroui/system": "2.4.18",
-    "@heroui/theme": "2.4.17",
+    "@heroui/theme": "2.4.24",
     "@prisma/client": "^6.11.1",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-checkbox": "^1.3.2",
